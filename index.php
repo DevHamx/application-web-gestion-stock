@@ -3,14 +3,18 @@
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link href="css/signin.css" rel="stylesheet">
     </head>
-    <body>
-        <form method="POST" action="index.php">
-            <label for="CIN">CIN</label>
-            <input type="text" name="CIN"><br>
-            <label for="password">password</label>
-            <input type="password" name="password"><br>
-            <input type="submit" value="Log In">
+    <body class="text-center">
+        <form class="form-signin" method="POST" action="index.php">
+            <img class="mb-4" src="res\images\entete_site.png" ><br>
+            <h1 class="h3 mb-3 font-weight-normal">Please Log in</h1>
+            <label class="sr-only" for="CIN">CIN</label>
+            <input class="form-control" type="text" name="CIN" placeholder="CIN" required autofocus><br>
+            <label class="sr-only" for="password">password</label>
+            <input class="form-control" type="password" name="password" placeholder="password" required autofocus><br>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">
         </form>
         <?php
             if(isset($_POST["CIN"])&&isset($_POST['password'])){
