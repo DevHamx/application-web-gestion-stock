@@ -5,6 +5,7 @@
         <title>Login</title>
         <link rel="stylesheet" href="css/bootstrap.css">
         <link href="css/signin.css" rel="stylesheet">
+        <link href="js/alert_script.js">
     </head>
     <body class="text-center">
         <form class="form-signin" method="POST" action="index.php">
@@ -30,8 +31,12 @@
                         }
                         else $var=1;}
                  mysqli_close($con);
-                 if($var==1)
-                  echo"error";}
+                 if($var==1);{?>
+                 <script>
+                    alert('error');
+                </script> 
+                <?php  
+                 }}
         ?>
     </body>
 </html>
