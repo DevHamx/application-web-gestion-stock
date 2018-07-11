@@ -9,7 +9,7 @@
     </head>
     <body class="text-center">
         <form class="form-signin" method="POST" action="index.php">
-            <img class="mb-4" src="res\images\entete_site.png" ><br>
+            <a href="http://www.aumk.ma/"><img class="mb-4" src="res\images\entete_site.png" ></a><br>
             <h1 style="color:#0a8ab4;" class="h3 mb-3 font-weight-normal">Please Log in</h1>
             <label class="sr-only" for="CIN">CIN</label>
             <input class="form-control" type="text" name="CIN" placeholder="CIN" required autofocus><br>
