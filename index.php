@@ -32,7 +32,9 @@
                         else $var=1;}
                  mysqli_close($con);
                  if($var==1);{?>
-                    <h1 class="text-danger">error</h1>
+                    <div class="alert alert-warning" role="alert">
+                        Vérifiez votre CIN et  mot de passe
+                      </div>
                  </form>
                 <?php  
                  }}
