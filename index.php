@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Login</title>
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/signin.css" rel="stylesheet">
         <link href="js/alert_script.js">
     </head>
@@ -16,7 +16,7 @@
             <label class="sr-only" for="password">password</label>
             <input class="form-control" type="password" name="password" placeholder="password" required autofocus><br>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">
-        </form>
+        
         <?php
             if(isset($_POST["CIN"])&&isset($_POST['password'])){
                 $var=0;
@@ -32,9 +32,8 @@
                         else $var=1;}
                  mysqli_close($con);
                  if($var==1);{?>
-                 <script>
-                    alert('error');
-                </script> 
+                    <h1 class="text-danger">error</h1>
+                 </form>
                 <?php  
                  }}
         ?>
