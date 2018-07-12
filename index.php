@@ -27,7 +27,7 @@
                     $reponse = mysqli_query($con,"select * from utilisateurs");
                     while($donnees = mysqli_fetch_array($reponse)){
                         if((strcmp($login1,$donnees['CIN'])==0)&&(strcmp($password1,$donnees['password'])==0)){
-                            header("location:home_page.html");
+                            header("location:home_page.php");
                         }
                         else $var=1;}
                  mysqli_close($con);
