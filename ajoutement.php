@@ -13,39 +13,43 @@
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
             <input class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="Nom de la Catégorie" required autofocus><br>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
-    </form>
     <?php
             if(isset($_POST["Nom_de_la_Categorie1"])){
-                $var=0;
+                $exist = 0;
                 $Nom=$_POST['Nom_de_la_Categorie1'];
                 $con=mysqli_connect("localhost","root","");
                     mysqli_select_db($con,'aumk');
                     $reponse = mysqli_query($con,"select * from categore1");
                     while($donnees = mysqli_fetch_array($reponse)){
-                        if((strcmp($Nom,$donnees['NOM_CATEGORE1']) > 0)){
-                            mysqli_query($con,"INSERT INTO categore1 (`NOM_CATEGORE1`) VALUES ('test')"); 
-                            mysqli_close($con);
-    ?>              
-                            <div></div>
-                                <div class="alert alert-success" role="alert">
-                                    la Catégorie a ete ajoute avec succes
-                                </div><br>
-                                <a href="ajoutement.php" class="btn btn-lg btn-primary btn-block">Ajouter une autre Catégorie</a>
-                                <a href="home_page.php" class="btn btn-lg btn-primary btn-block">retourner a la page principale</a>
-                            </div>
-    <?php
-                    $var=0;
+                        $test = strcmp($Nom,$donnees['NOM_CATEGORE1']);
+                        if($test == 0){
+                            $exist = 1;
+                            break;
                         }
-                        else $var=1;}
-                 mysqli_close($con);
-                 if($var==1);{?>
-                    <br><div class="alert alert-warning" role="alert">
+                    }
+                    if ($exist == 0) {
+                        mysqli_query($con,"INSERT INTO categore1 (`NOM_CATEGORE1`) VALUES ('$Nom')"); 
+                        mysqli_close($con);
+                        ?>              
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                                la Catégorie a ete ajoute avec succes
+                            </div><br>
+                            <a href="home_page.php" class="btn btn-lg btn-success btn-block">retourner a la page principale</a>
+                            <a href="#" class="btn btn-lg btn-info btn-block">Afficher la liste des Catégories</a>
+                        <?php
+                    } 
+                    else {
+                        mysqli_close($con);
+                        ?>
+                        <div class="alert alert-warning" role="alert">
                         Cette Catégorie est deja existe
-                      </div>
-                 </form>
-                <?php  
-                 }}
-        ?>
+                        </div>
+                        <?php
+                    }}                     
+                ?>
+                </form>
+                
  <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
