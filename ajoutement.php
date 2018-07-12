@@ -8,6 +8,8 @@
     <title>Ajoutement</title>
 </head>
 <body>
+<?php 
+    include 'navbar.html';?>
     <form class="form-signin" method="POST" action="ajoutement.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
@@ -32,17 +34,15 @@
                         mysqli_close($con);
                         ?>              
                             </div>
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-success text-center" role="alert">
                                 la Catégorie a ete ajoute avec succes
-                            </div><br>
-                            <a href="home_page.php" class="btn btn-lg btn-success btn-block">retourner a la page principale</a>
-                            <a href="#" class="btn btn-lg btn-info btn-block">Afficher la liste des Catégories</a>
+                            </div>
                         <?php
                     } 
                     else {
                         mysqli_close($con);
                         ?>
-                        <div class="alert alert-warning" role="alert">
+                        <div class="alert alert-warning text-center" role="alert">
                         Cette Catégorie est deja existe
                         </div>
                         <?php
