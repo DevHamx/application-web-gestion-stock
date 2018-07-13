@@ -27,7 +27,7 @@
             </select><br><br>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
     <?php
-            if(isset($_POST["Nom_de_la_Categorie2"])&&isset($_POST["Nom_de_la_Categorie1"])){
+            if(isset($_POST["Nom_de_la_Categorie2"])&&isset($_POST["Nom_de_lartcile"])){
                 $exist = 0;
                 $Nom2=$_POST['Nom_de_la_Categorie2'];
                 $Nom3=$_POST['Nom_de_lartcile'];
@@ -49,7 +49,7 @@
                         ?>              
                             </div>
                             <div class="alert alert-success text-center" role="alert">
-                                la Catégorie a ete ajoute avec succes
+                            l'article a ete ajoute avec succes
                             </div>
                         <?php
                     } 
@@ -57,7 +57,7 @@
                         mysqli_close($con);
                         ?>
                         <div class="alert alert-warning text-center" role="alert">
-                        Cette Catégorie est deja existe
+                        Ce article est deja existe
                         </div>
                         <?php
                     }}                     
