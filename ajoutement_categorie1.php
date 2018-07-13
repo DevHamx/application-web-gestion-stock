@@ -10,7 +10,7 @@
 <body>
 <?php 
     include 'navbar.html';?>
-    <form class="form-signin" method="POST" action="ajoutement.php">
+    <form class="form-signin" method="POST" action="ajoutement_categorie1.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
             <input class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="Nom de la Catégorie" required autofocus><br>
