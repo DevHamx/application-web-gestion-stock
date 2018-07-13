@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -27,6 +30,9 @@
                     $reponse = mysqli_query($con,"select * from utilisateurs");
                     while($donnees = mysqli_fetch_array($reponse)){
                         if((strcmp($login1,$donnees['CIN'])==0)&&(strcmp($password1,$donnees['password'])==0)){
+                            $reponse2 = mysqli_query($con,"select ID_LOGIN from utilisateurs where CIN = '$login1' ");
+                            $id_login = mysqli_fetch_array($reponse2);
+                            $_SESSION["id_login"] = $id_login[0];
                             header("location:home_page.php");
                         }
                         else $var=1;}
