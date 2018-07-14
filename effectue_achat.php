@@ -21,7 +21,7 @@ session_start();
     ?>
     <form class="form-signin" method="POST" action="effectue_achat.php">
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">effectue un achat</h1>
-        <select id="top_Categorie" name="Nom_de_la_Categorie1" class="custom-select" onchange="change_categore()">
+        <select required id="top_Categorie" name="Nom_de_la_Categorie1" class="custom-select" onchange="change_categore()">
             <option disabled selected>sélectionnez la catégorie supérieure</option>
             <?php while($row1 = mysqli_fetch_array($reponse1)):;?>
             <option value="<?php echo $row1["ID_CATEGORE1"];?>"><?php echo $row1["NOM_CATEGORE1"];?></option>
@@ -30,16 +30,14 @@ session_start();
         <br>
         <br>
         <div id="sec_Categorie">
-        <select  name="Nom_de_la_Categorie2" class="custom-select">
+        <select id='article2' required name="Nom_de_la_Categorie2" class="custom-select">
             <option disabled selected>sélectionnez la catégorie secondaire</option>
         </select></div>
         <br>
-        <br>
         <div id="article">
-        <select name="Nom_de_larticle" class="custom-select">
+        <select required name="Nom_de_larticle" class="custom-select">
             <option disabled selected>sélectionnez l'article</option>
         </select></div>
-        <br>
         <br>
         <input class="form-control" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required type="date" name="date" value="<?php echo date("Y-m-d");?>" max="<?php echo date("Y-m-d");?>">
         <br>
@@ -47,58 +45,46 @@ session_start();
         <br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
         <?php
-            if(isset($_POST["Nom_de_la_Categorie2"])&&isset($_POST["Nom_de_la_Categorie1"])){
-                $exist = 0;
-                $Nom2=$_POST['Nom_de_la_Categorie2'];
-                $Nom3=$_POST['Nom_de_lartcile'];
+            if(isset($_COOKIE['article_id'])&&isset($_POST["date"])&&isset($_POST["quantity"])&&isset($_SESSION["id_login"])){
+                $date=$_POST['date'];
+                $quantity=$_POST['quantity'];
+                $login=$_SESSION["id_login"];
+                $article_id=$_COOKIE['article_id'];
                 $con=mysqli_connect("localhost","root","");
                     mysqli_select_db($con,'aumk');
-                    $result2 = mysqli_query($con,"select ID_CATEGORE2 from categore2 where NOM_CATEGORE2 = '$Nom2' ");
-                    $id2 = mysqli_fetch_array($result2);
-                    $reponse3 = mysqli_query($con,"select * from article");
-                    while($donnees = mysqli_fetch_array($reponse3)){
-                        $test = strcmp($Nom3,$donnees['NOM_ARTICLE']);
-                        if($test == 0){
-                            $exist = 1;
-                            break;
-                        }
-                    }
-                    if ($exist == 0) {
-                        mysqli_query($con,"INSERT INTO article (`ID_CATEGORE2`,`NOM_ARTICLE`) VALUES ($id2[0],'$Nom3')"); 
+                        mysqli_query($con,"INSERT INTO `achat_fornisseur` (`ID_ACHAT`, `ID_ARTICLE`, `ID_LOGIN`, `DATE_ACHAT`, `QUANTITE_ACHAT`) VALUES (NULL,'$article_id','$login','$date','$quantity')"); 
                         mysqli_close($con);
                         ?>
         </div>
         <div class="alert alert-success text-center" role="alert">
-            la Catégorie a ete ajoute avec succes
+            l'achat a ete effectue avec succes
         </div>
         <?php
-                    } 
-                    else {
-                        mysqli_close($con);
-                        ?>
-        <div class="alert alert-warning text-center" role="alert">
-            Cette Catégorie est deja existe
-        </div>
-        <?php
-                    }}                     
+                    }                     
                 ?>
     </form>
     <script type="text/JavaScript">
     function change_categore(){
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","ajax.php?categorie1="+document.getElementById("top_Categorie").value+"&sec_Categorie=",false);
-    xmlhttp.send(null);
-    document.getElementById("sec_Categorie").innerHTML=xmlhttp.responseText;   
-    if (document.getElementById("top_Categorie").value != "sélectionnez la catégorie secondaire" ) {
-        document.getElementById("article").innerHTML="<select class='custom-select'><option disabled selected>sélectionnez l'article</option></select>";
-    }
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET","ajax.php?categorie1="+document.getElementById("top_Categorie").value+"&sec_Categorie=",false);
+        xmlhttp.send(null);
+        document.getElementById("sec_Categorie").innerHTML=xmlhttp.responseText;   
+        if (document.getElementById("top_Categorie").value != "sélectionnez la catégorie secondaire" ) {
+            document.getElementById("article").innerHTML="<select class='custom-select'><option disabled selected>sélectionnez l'article</option></select>";
+        }
 }
     function change_categore2(){
         var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET","ajax.php?sec_Categorie="+document.getElementById("sec_Categorie2").value+"&categorie1=",false);
-    xmlhttp.send(null);
-    document.getElementById("article").innerHTML=xmlhttp.responseText;  
+        xmlhttp.open("GET","ajax.php?sec_Categorie="+document.getElementById("sec_Categorie2").value+"&categorie1=",false);
+        xmlhttp.send(null);
+        document.getElementById("article").innerHTML=xmlhttp.responseText;  
 }
+    function change_article() {
+        if (document.getElementById("article2").value != "sélectionnez l'article") {
+            var article_id = document.getElementById("article2").value;
+            document.cookie="article_id="+article_id;
+        }
+    }
     </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
