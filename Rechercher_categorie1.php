@@ -31,15 +31,15 @@
                     $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
-                            <tr class="text-center">
+                            <tr >
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col" colspan="2">Options</th>
+                                <th scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse)){?>
-                            <tr class="text-center">
+                            <tr>
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
@@ -55,15 +55,15 @@
                     $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
-                            <tr class="text-center">
+                            <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col" colspan="2">Options</th>
+                                <th scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse2)){?>
-                            <tr class="text-center">    
+                            <tr>    
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
