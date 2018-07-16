@@ -28,7 +28,16 @@
                 $con=mysqli_connect("localhost","root","");
                 mysqli_select_db($con,'aumk');
                 if ($_POST["method"] == "ID de la catégorie") {
-                    $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");?>
+                    $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");
+                    if (mysqli_fetch_array($reponse) == null) {?>
+                        <div class="alert alert-warning text-center form-signin" role="alert">
+                        Ce ID n'existe pas
+                        </div>
+                        <?php
+                    }
+                    else {
+                        $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");
+                    ?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
                             <tr >
@@ -50,9 +59,17 @@
                     </tbody>
                     </table> 
                     <?php       
-                }
+                }}
                 else {
-                    $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
+                    $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");
+                    if (mysqli_fetch_array($reponse2) == null) {?>
+                        <div class="alert alert-warning text-center form-signin" role="alert">
+                        Ce Nom n'existe pas
+                        </div>
+                        <?php
+                    }
+                    else {
+                        $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
                             <tr>
@@ -74,7 +91,7 @@
                     </tbody>
                     </table> 
                     <?php
-                }
+                }}
             }
         ?>
         </main><!-- /.container -->
