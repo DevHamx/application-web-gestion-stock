@@ -42,8 +42,8 @@
                             <tr class="text-center">
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="#"><img src="res\images\edit-icon.png" title="modifier"></a></td>
-                                <td><a href="#"><img src="res\images\delete-icon.png" title="supprimer"></a></td>
+                                <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
@@ -66,8 +66,8 @@
                             <tr class="text-center">    
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="#"><img src="res\images\edit-icon.png" title="modifier"></a></td>
-                                <td><a href="#"><img src="res\images\delete-icon.png" title="supprimer"></a></td>
+                                <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
