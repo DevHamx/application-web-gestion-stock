@@ -43,7 +43,7 @@
                             <tr >
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col" colspan="2" width="1%">Options</th>
+                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -75,7 +75,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
-                                <th scope="col" colspan="2" width="1%">Options</th>
+                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
