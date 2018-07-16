@@ -31,16 +31,20 @@
                     $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
+                                <th scope="col" colspan="2">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                            <tr>
                     <?php while($donnees = mysqli_fetch_array($reponse)){?>
+                            <tr class="text-center">
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
+                                <td><a href="#"><img src="res\images\edit-icon.png" title="modifier"></a></td>
+                                <td><a href="#"><img src="res\images\delete-icon.png" title="supprimer"></a></td>
+                            </tr>
                     <?php
                     }?>
                     </tbody>
@@ -51,16 +55,20 @@
                     $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
                     <table class="table table-bordered table-hover">
                         <thead class="table-primary">
-                            <tr>
+                            <tr class="text-center">
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
+                                <th scope="col" colspan="2">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                            <tr>
                     <?php while($donnees = mysqli_fetch_array($reponse2)){?>
+                            <tr class="text-center">    
                                 <th scope="row"><?php echo $donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
+                                <td><a href="#"><img src="res\images\edit-icon.png" title="modifier"></a></td>
+                                <td><a href="#"><img src="res\images\delete-icon.png" title="supprimer"></a></td>
+                            </tr>
                     <?php
                     }?>
                     </tbody>
