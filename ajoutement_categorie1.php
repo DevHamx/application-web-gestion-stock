@@ -12,12 +12,13 @@ session_start();
 </head>
 <body>
 <?php 
-    include 'navbar.html';?>
+    include 'navbar.html';
+    $id=$_SESSION["id_categorie"];?>
     <form class="form-signin" method="POST" action="ajoutement_categorie1.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
             <input class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="Nom de la Catégorie" required autofocus><br>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id != null){echo "Modifier";}else{echo "Ajouter";}?>">
     <?php
             if(isset($_POST["Nom_de_la_Categorie1"])){
                 $exist = 0;
@@ -33,7 +34,6 @@ session_start();
                         }
                     }
                     if ($exist == 0) {
-                        $id=$_SESSION["id_categorie"];
                         if ($id != null) {
                             mysqli_query($con,"UPDATE categore1 SET NOM_CATEGORE1= '$Nom'  WHERE ID_CATEGORE1 = $id "); 
                             $_SESSION["id_categorie"] = null;
