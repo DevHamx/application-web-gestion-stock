@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,15 +33,25 @@
                         }
                     }
                     if ($exist == 0) {
+                        $id=$_SESSION["id_categorie"];
+                        if ($id != null) {
+                            mysqli_query($con,"UPDATE categore1 SET NOM_CATEGORE1= '$Nom'  WHERE ID_CATEGORE1 = $id "); 
+                            $_SESSION["id_categorie"] = null;
+                            mysqli_close($con);?>
+                            <div class="alert alert-success text-center" role="alert">
+                                la Catégorie a ete modifier avec succes
+                            </div>
+                            <?php
+                        }
+                        else{
                         mysqli_query($con,"INSERT INTO categore1 (`NOM_CATEGORE1`) VALUES ('$Nom')"); 
                         mysqli_close($con);
                         ?>              
-                            </div>
                             <div class="alert alert-success text-center" role="alert">
                                 la Catégorie a ete ajoute avec succes
                             </div>
                         <?php
-                    } 
+                    }}
                     else {
                         mysqli_close($con);
                         ?>

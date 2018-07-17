@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,9 +52,9 @@
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse)){?>
                             <tr>
-                                <th scope="row"><?php echo $donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0]; $_SESSION["id_categorie"]=$donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
@@ -81,9 +84,9 @@
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse2)){?>
                             <tr>    
-                                <th scope="row"><?php echo $donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0];$_SESSION["id_categorie"]=$donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="#"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
