@@ -41,7 +41,7 @@ session_start();
                     else {
                         $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");
                     ?>
-                    <table class="table table-bordered table-hover">
+                    <table id="table" class="table table-hover">
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
@@ -55,7 +55,7 @@ session_start();
                                 <th scope="row"><?php echo $donnees[0]; $_SESSION["id_categorie"]=$donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
@@ -73,7 +73,7 @@ session_start();
                     }
                     else {
                         $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
-                    <table class="table table-bordered table-hover">
+                    <table id="table" class="table table-hover">
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
@@ -87,7 +87,7 @@ session_start();
                                 <th scope="row"><?php echo $donnees[0];$_SESSION["id_categorie"]=$donnees[0]; ?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
@@ -109,6 +109,15 @@ session_start();
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='text' name='valeur' placeholder='"+String(method)+"' required >";
             }
             }
+        }
+        </script>
+        <script type="text/JavaScript">
+        function supprimer(test) {
+            var x = new XMLHttpRequest();
+            x.open("GET","supprimer.php?id="+test,true);
+            x.send();
+            document.getElementById("table").innerHTML="<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+            return false;
         }
         </script>
         <!-- Bootstrap core JavaScript
