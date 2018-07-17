@@ -17,8 +17,12 @@ session_start();
     <form class="form-signin" method="POST" action="ajoutement_categorie1.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
-            <input class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="Nom de la Catégorie" required autofocus><br>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id != null){echo "Modifier";}else{echo "Ajouter";}?>">
+            <input required autofocus class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="<?php if ($id != null){
+                $value2="Le nouveau nom de la Catégorie"; echo $value2 ;$_SESSION["id_categorie"] = null; }
+                else{$value2="Nom de la Catégorie";echo $value2 ;}?>"><br>
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id != null){
+                $value="Modifier"; echo $value ;$_SESSION["id_categorie"] = null; }
+                else{$value="Ajouter";echo $value ;}?>">
     <?php
             if(isset($_POST["Nom_de_la_Categorie1"])){
                 $exist = 0;
@@ -34,7 +38,7 @@ session_start();
                         }
                     }
                     if ($exist == 0) {
-                        if ($id != null) {
+                        if ($value == "Modifier") {
                             mysqli_query($con,"UPDATE categore1 SET NOM_CATEGORE1= '$Nom'  WHERE ID_CATEGORE1 = $id "); 
                             $_SESSION["id_categorie"] = null;
                             mysqli_close($con);?>
