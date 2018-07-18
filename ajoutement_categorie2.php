@@ -13,8 +13,12 @@ session_start();
 <body>
 <?php 
     include 'navbar.html';
-    $_SESSION["id_categorie2"];
-    $id2=$_SESSION["id_categorie2"];
+    if (isset($_SESSION["id_categorie2"])) {
+        $id2=$_SESSION["id_categorie2"];   
+    }
+    else {
+        $id2=null;
+    }
     $con=mysqli_connect("localhost","root","");
     mysqli_select_db($con,'aumk');
     $reponse1 = mysqli_query($con,"select * from categore1");
