@@ -13,6 +13,7 @@ session_start();
 <body>
 <?php 
     include 'navbar.html';
+    $_SESSION["id_categorie"];
     $id=$_SESSION["id_categorie"];?>
     <form class="form-signin" method="POST" action="ajoutement_categorie1.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
