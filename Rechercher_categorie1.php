@@ -41,7 +41,8 @@ session_start();
                     else {
                         $reponse=mysqli_query($con,"select * from categore1 where ID_CATEGORE1 = $valeur");
                     ?>
-                    <table id="table" class="table table-hover">
+                    <div id=table>
+                    <table class="table table-hover">
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
@@ -60,7 +61,7 @@ session_start();
                     <?php
                     }?>
                     </tbody>
-                    </table> 
+                    </table></div>
                     <?php       
                 }}
                 else {
@@ -73,7 +74,8 @@ session_start();
                     }
                     else {
                         $reponse2=mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 = '$valeur'");?>
-                    <table id="table" class="table table-hover">
+                <div id="table">
+                    <table class="table table-hover">
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
@@ -92,7 +94,7 @@ session_start();
                     <?php
                     }?>
                     </tbody>
-                    </table> 
+                    </table></div>
                     <?php
                 }}
             }
@@ -114,9 +116,9 @@ session_start();
         <script type="text/JavaScript">
         function supprimer(test) {
             var x = new XMLHttpRequest();
-            x.open("GET","supprimer.php?id="+test,true);
-            x.send();
-            document.getElementById("table").innerHTML="<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+            x.open("GET","supprimer.php?id="+test,false);
+            x.send(null);
+            document.getElementById("table").innerHTML=x.responseText; 
             return false;
         }
         </script>
