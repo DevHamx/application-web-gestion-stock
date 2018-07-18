@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +13,8 @@
 <body>
 <?php 
     include 'navbar.html';
+    $_SESSION["id_categorie2"];
+    $id2=$_SESSION["id_categorie2"];
     $con=mysqli_connect("localhost","root","");
     mysqli_select_db($con,'aumk');
     $reponse1 = mysqli_query($con,"select * from categore1");
@@ -17,14 +22,18 @@
     <form class="form-signin" method="POST" action="ajoutement_categorie2.php">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 2</h1>
             <label class="sr-only" for="Nom_de_la_Categorie2">Nom de la Catégorie</label>
-            <input class="form-control" type="text" name="Nom_de_la_Categorie2" placeholder="Nom de la Catégorie" required autofocus><br>
+            <input class="form-control" type="text" name="Nom_de_la_Categorie2" placeholder="<?php if ($id2 != null){
+                $value2="Le nouveau nom de la Catégorie"; echo $value2 ;$_SESSION["id_categorie"] = null; }
+                else{$value2="Nom de la Catégorie";echo $value2 ;}?>" required autofocus><br>
             <select name="Nom_de_la_Categorie1" class="custom-select">
                 <option disabled selected>sélectionnez la catégorie supérieure</option>
                 <?php while($row1 = mysqli_fetch_array($reponse1)):;?>
                 <option><?php echo $row1[1];?></option>
                 <?php endwhile;?>
             </select><br><br>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id2 != null){
+                $value="Modifier"; echo $value ;$_SESSION["id_categorie"] = null; }
+                else{$value="Ajouter";echo $value ;}?>">
     <?php
             if(isset($_POST["Nom_de_la_Categorie2"])&&isset($_POST["Nom_de_la_Categorie1"])){
                 $exist = 0;
@@ -43,6 +52,16 @@
                         }
                     }
                     if ($exist == 0) {
+                        if ($value == "Modifier"){
+                            mysqli_query($con,"UPDATE categore2 SET NOM_CATEGORE2= '$Nom2',ID_CATEGORE1=$id[0]  WHERE ID_CATEGORE2 = $id2 "); 
+                            $_SESSION["id_categorie2"] = null;
+                            mysqli_close($con);?>
+                            <div class="alert alert-success text-center" role="alert">
+                                la Catégorie a ete modifier avec succes
+                            </div>
+                            <?php
+                        }
+                        else{
                         mysqli_query($con,"INSERT INTO categore2 (`ID_CATEGORE1`,`NOM_CATEGORE2`) VALUES ($id[0],'$Nom2')"); 
                         mysqli_close($con);
                         ?>              
@@ -51,7 +70,7 @@
                                 la Catégorie a ete ajoute avec succes
                             </div>
                         <?php
-                    } 
+                    }}
                     else {
                         mysqli_close($con);
                         ?>
