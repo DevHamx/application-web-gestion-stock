@@ -54,10 +54,10 @@ session_start();
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse)){?>
                             <tr>
-                                <th scope="row"><?php echo $donnees[0]; $_SESSION["id_categorie2"]=$donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><?php echo $donnees[2]; ?></td>
-                                <td><a href="ajoutement_categorie2.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie2.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
@@ -89,10 +89,10 @@ session_start();
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse2)){?>
                             <tr>    
-                                <th scope="row"><?php echo $donnees[0];$_SESSION["id_categorie2"]=$donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees[1]; ?></td>
                                 <td><?php echo $donnees[2]; ?></td>
-                                <td><a href="ajoutement_categorie2.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie2.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php

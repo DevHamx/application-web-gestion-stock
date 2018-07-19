@@ -44,7 +44,7 @@ session_start();
                     <div id=table>
                     <table class="table table-hover">
                         <thead class="table-primary">
-                            <tr >
+                            <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nom</th>
                                 <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -53,9 +53,9 @@ session_start();
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse)){?>
                             <tr>
-                                <th scope="row"><?php echo $donnees[0]; $_SESSION["id_categorie"]=$donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
@@ -86,9 +86,9 @@ session_start();
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse2)){?>
                             <tr>    
-                                <th scope="row"><?php echo $donnees[0];$_SESSION["id_categorie"]=$donnees[0]; ?></th>
+                                <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees[1]; ?></td>
-                                <td><a href="ajoutement_categorie1.php"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
