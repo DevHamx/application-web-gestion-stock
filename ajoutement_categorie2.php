@@ -58,7 +58,6 @@ session_start();
                     if ($exist == 0) {
                         if ($value == "Modifier"){
                             mysqli_query($con,"UPDATE categore2 SET NOM_CATEGORE2= '$Nom2',ID_CATEGORE1=$id[0]  WHERE ID_CATEGORE2 = $id2 "); 
-                            $_SESSION["id_categorie2"] = null;
                             mysqli_close($con);?>
                             <div class="alert alert-success text-center" role="alert">
                                 la Catégorie a ete modifier avec succes
