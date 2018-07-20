@@ -48,4 +48,12 @@
         }
         mysqli_close($con);
     }
+    if (isset($_GET['id4'])) {
+        $id4=$_GET['id4'];
+        if ($id4 != ""){
+                mysqli_query($con,"DELETE FROM achat_fornisseur WHERE ID_ACHAT=$id4");
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+            }            
+        }
+        mysqli_close($con);
 ?>
