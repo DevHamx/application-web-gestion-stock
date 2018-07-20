@@ -27,7 +27,9 @@ session_start();
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
         </form><br>
         <?php
-        $_POST["valeur"]=0;
+        if (isset($_POST["valeur"])==false) {
+            $_POST["valeur"]=0;
+        }
             if (isset($_POST["valeur"])&&isset($_POST["method"])) {
                 $valeur=$_POST["valeur"];
                 $con=mysqli_connect("localhost","root","");

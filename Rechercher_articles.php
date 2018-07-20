@@ -19,20 +19,22 @@ session_start();
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
             <option value="Afficher tous la list">Afficher tous la list</option>
-            <option value="ID de l'article">ID de l'article</option>
-            <option value="Nom de l'article">Nom de l'article</option>
+            <option value="ID de larticle">ID de larticle</option>
+            <option value="Nom de larticle">Nom de larticle</option>
         </select><br><br>
         <div id="valeur" >
         <input  class="form-control" type="text" name="valeur" required ></div><br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
         </form><br>
         <?php
-        $_POST["valeur"]=0;
+        if (isset($_POST["valeur"])==false) {
+            $_POST["valeur"]=0;
+        }
             if (isset($_POST["valeur"])&&isset($_POST["method"])) {
                 $valeur=$_POST["valeur"];
                 $con=mysqli_connect("localhost","root","");
                 mysqli_select_db($con,'aumk');
-                if ($_POST["method"] == "ID de l'article") {
+                if ($_POST["method"] == "ID de larticle") {
                     $reponse=mysqli_query($con,"select * from article where ID_ARTICLE = $valeur");
                     if (mysqli_fetch_array($reponse) == null) {?>
                         <div class="alert alert-warning text-center form-signin" role="alert">
@@ -138,7 +140,7 @@ session_start();
         function change_method() {
         if (document.getElementById("method").value != "Recherche Par :") {
             var method = document.getElementById("method").value;
-            if (document.getElementById("method").value === "ID de l'article") {
+            if (document.getElementById("method").value === "ID de larticle") {
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='number' name='valeur' placeholder='"+String(method)+"' required >";   
             }
             else if(document.getElementById("method").value === "Afficher tous la list"){
