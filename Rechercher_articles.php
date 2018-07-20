@@ -153,7 +153,7 @@ session_start();
         <script type="text/JavaScript">
         function supprimer(test) {
             var x = new XMLHttpRequest();
-            x.open("GET","supprimer.php?id2="+test,false);
+            x.open("GET","supprimer.php?id3="+test,false);
             x.send(null);
             document.getElementById("table").innerHTML=x.responseText;
             return false;

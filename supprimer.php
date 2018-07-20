@@ -31,4 +31,21 @@
         }
         mysqli_close($con);
     }
+    if (isset($_GET['id3'])) {
+        $id3=$_GET['id3'];
+        if ($id3 != ""){
+            $result3 = mysqli_query($con,"SELECT * FROM achat_fornisseur WHERE ID_ARTICLE=$id3");
+            $result4 = mysqli_query($con,"SELECT * FROM reception WHERE ID_ARTICLE=$id3");
+            $row2=mysqli_fetch_array($result3);
+            $row3=mysqli_fetch_array($result4);
+            if ( ($row2[0] == null)&&($row3[0] == null)) {
+                mysqli_query($con,"DELETE FROM article WHERE ID_ARTICLE=$id3");
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+            }
+            else {
+                echo "<div class='alert alert-warning text-center form-signin' role='alert'>vous doit supprimer les sous catégories avant de supprimer cette catégorie car ils ont relient</div>";
+            }            
+        }
+        mysqli_close($con);
+    }
 ?>
