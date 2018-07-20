@@ -76,6 +76,7 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">ID Categorie 1</th>
                                 <th scope="col">Nom</th>
                                 <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
@@ -85,6 +86,7 @@ session_start();
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees[1]; ?></td>
+                                <td><?php echo $donnees[2]; ?></td>
                                 <td><a href="ajoutement_categorie2.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
