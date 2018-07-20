@@ -10,14 +10,22 @@
 <body>
 <?php 
     include 'navbar.html';
+    if (isset($_GET['id'])) {
+        $id3=$_GET['id'];   
+    }
+    else {
+        $id3=null;
+    }
     $con=mysqli_connect("localhost","root","");
     mysqli_select_db($con,'aumk');
     $reponse2 = mysqli_query($con,"select * from categore2");
     ?>
-    <form class="form-signin" method="POST" action="ajoutement_articles.php">
+    <form class="form-signin" method="POST" action="ajoutement_articles.php?id=<?php echo $id3?>">
     <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">articles</h1>
             <label class="sr-only" for="Nom_de_lartcile">Nom de l'article</label>
-            <input class="form-control" type="text" name="Nom_de_lartcile" placeholder="Nom de l'article" required autofocus><br>
+            <input class="form-control" type="text" name="Nom_de_lartcile" placeholder="<?php if ($id3 != null){
+                $value3="Le nouveau nom de larticle"; echo $value3 ;}
+                else{$value3="Nom de larticle'";echo $value3 ;}?>" required autofocus><br>
             </select>
             <select name="Nom_de_la_Categorie2" class="custom-select">
                 <option disabled selected>sélectionnez la catégorie secondaire</option>
@@ -25,7 +33,9 @@
                 <option><?php echo $row2[2];?></option>
                 <?php endwhile;?>
             </select><br><br>
-            <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
+            <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id3 != null){
+                $value="Modifier"; echo $value ;}
+                else{$value="Ajouter";echo $value ;}?>">
     <?php
             if(isset($_POST["Nom_de_la_Categorie2"])&&isset($_POST["Nom_de_lartcile"])){
                 $exist = 0;
@@ -34,7 +44,7 @@
                 $con=mysqli_connect("localhost","root","");
                     mysqli_select_db($con,'aumk');
                     $result2 = mysqli_query($con,"select ID_CATEGORE2 from categore2 where NOM_CATEGORE2 = '$Nom2' ");
-                    $id2 = mysqli_fetch_array($result2);
+                    $id = mysqli_fetch_array($result2);
                     $reponse3 = mysqli_query($con,"select * from article");
                     while($donnees = mysqli_fetch_array($reponse3)){
                         $test = strcmp($Nom3,$donnees['NOM_ARTICLE']);
@@ -44,7 +54,16 @@
                         }
                     }
                     if ($exist == 0) {
-                        mysqli_query($con,"INSERT INTO article (`ID_CATEGORE2`,`NOM_ARTICLE`) VALUES ($id2[0],'$Nom3')"); 
+                        if ($value == "Modifier"){
+                            mysqli_query($con,"UPDATE article SET NOM_ARTICLE= '$Nom3',ID_CATEGORE2=$id[0]  WHERE ID_ARTICLE = $id3 "); 
+                            mysqli_close($con);?>
+                            <div class="alert alert-success text-center" role="alert">
+                                l'article a ete modifier avec succes
+                            </div>
+                            <?php
+                        }
+                        else{
+                        mysqli_query($con,"INSERT INTO article (`ID_CATEGORE2`,`NOM_ARTICLE`) VALUES ($id3[0],'$Nom3')"); 
                         mysqli_close($con);
                         ?>              
                             </div>
@@ -52,7 +71,7 @@
                             l'article a ete ajoute avec succes
                             </div>
                         <?php
-                    } 
+                    }}
                     else {
                         mysqli_close($con);
                         ?>
