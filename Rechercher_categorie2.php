@@ -18,6 +18,7 @@ session_start();
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Recherche dans la Catégorie 2</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
+            <option value="Afficher tous la list">Afficher tous la list</option>
             <option value="ID de la catégorie">ID de la catégorie</option>
             <option value="Nom de la catégorie">Nom de la catégorie</option>
         </select><br><br>
@@ -26,6 +27,7 @@ session_start();
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
         </form><br>
         <?php
+        $_POST["valeur"]=0;
             if (isset($_POST["valeur"])&&isset($_POST["method"])) {
                 $valeur=$_POST["valeur"];
                 $con=mysqli_connect("localhost","root","");
@@ -66,6 +68,32 @@ session_start();
                     </table></div>
                     <?php       
                 }}
+                elseif ($_POST["method"] == "Afficher tous la list") {
+                    $reponse3=mysqli_query($con,"select * from categore2");
+                    ?>
+                    <div id=table>
+                    <table class="table table-hover">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nom</th>
+                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-light">
+                    <?php while($donnees = mysqli_fetch_array($reponse3)){?>
+                            <tr>
+                                <th scope="row"><?php echo $donnees[0];?></th>
+                                <td><?php echo $donnees[1]; ?></td>
+                                <td><a href="ajoutement_categorie2.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                            </tr>
+                    <?php
+                    }?>
+                    </tbody>
+                    </table></div>
+                    <?php       
+                }
                 else {
                     $reponse2=mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 = '$valeur'");
                     if (mysqli_fetch_array($reponse2) == null) {?>
@@ -110,6 +138,9 @@ session_start();
             var method = document.getElementById("method").value;
             if (document.getElementById("method").value === "ID de la catégorie") {
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='number' name='valeur' placeholder='"+String(method)+"' required >";   
+            }
+            else if(document.getElementById("method").value === "Afficher tous la list"){
+                document.getElementById("valeur").innerHTML=null;
             }
             else{
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='text' name='valeur' placeholder='"+String(method)+"' required >";
