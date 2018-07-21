@@ -65,7 +65,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="consultation_achats.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
@@ -97,7 +97,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="consultation_achats.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
@@ -136,7 +136,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="consultation_achats.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php

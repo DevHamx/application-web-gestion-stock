@@ -15,12 +15,21 @@ session_start();
 <body>
     <?php 
     include 'navbar.html';
+    if (isset($_GET['id'])) {
+        $id4=$_GET['id'];   
+    }
+    else {
+        $id4=null;
+    }
+    include 'navbar.html';
     $con=mysqli_connect("localhost","root","");
     mysqli_select_db($con,'aumk');
     $reponse1 = mysqli_query($con,"select * from categore1");
     ?>
-    <form class="form-signin" method="POST" action="effectue_achat.php">
-        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">effectue un achat</h1>
+    <form class="form-signin" method="POST" action="effectue_achat.php?id=<?php echo $id4?>">
+        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase"><?php if ($id4 != null){
+                $value3="modifier un achat"; echo $value3 ;}
+                else{$value3="effectue un achat";echo $value3 ;}?></h1>
         <select required id="top_Categorie" name="Nom_de_la_Categorie1" class="custom-select" onchange="change_categore()">
             <option disabled selected>sélectionnez la catégorie supérieure</option>
             <?php while($row1 = mysqli_fetch_array($reponse1)):;?>
@@ -43,7 +52,9 @@ session_start();
         <br>
         <input class="form-control" type="number" name="quantity" placeholder="Quantity" required autofocus>
         <br>
-        <input class="btn btn-lg btn-primary btn-block" type="submit" value="Ajouter">
+        <input class="btn btn-lg btn-primary btn-block" type="submit" value="<?php if ($id4 != null){
+                $value="Modifier"; echo $value ;}
+                else{$value="Ajouter";echo $value ;}?>">
         <?php
             if(isset($_COOKIE['article_id'])&&isset($_POST["date"])&&isset($_POST["quantity"])&&isset($_SESSION["id_login"])){
                 $date=$_POST['date'];
@@ -52,15 +63,24 @@ session_start();
                 $article_id=$_COOKIE['article_id'];
                 $con=mysqli_connect("localhost","root","");
                     mysqli_select_db($con,'aumk');
+                    if ($value == "Modifier"){
+                        mysqli_query($con,"UPDATE achat_fornisseur SET `ID_ARTICLE` = '$article_id', `ID_LOGIN` = '$login', `DATE_ACHAT` = '$date', `QUANTITE_ACHAT` = '$quantity' WHERE ID_ACHAT = $id4 "); 
+                        mysqli_close($con);?>
+                        <div class="alert alert-success text-center" role="alert">
+                            l'achat a ete modifier avec succes
+                        </div>
+                        <?php
+                    }
+                    else{
                         mysqli_query($con,"INSERT INTO `achat_fornisseur` (`ID_ACHAT`, `ID_ARTICLE`, `ID_LOGIN`, `DATE_ACHAT`, `QUANTITE_ACHAT`) VALUES (NULL,'$article_id','$login','$date','$quantity')"); 
                         mysqli_close($con);
                         ?>
-        </div>
-        <div class="alert alert-success text-center" role="alert">
-            l'achat a ete effectue avec succes
-        </div>
-        <?php
-                    }                     
+                        </div>
+                        <div class="alert alert-success text-center" role="alert">
+                            l'achat a ete effectue avec succes
+                        </div>
+                        <?php
+                    }}                    
                 ?>
     </form>
     <script type="text/JavaScript">
