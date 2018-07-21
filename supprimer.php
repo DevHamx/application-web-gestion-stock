@@ -53,7 +53,15 @@
         if ($id4 != ""){
                 mysqli_query($con,"DELETE FROM achat_fornisseur WHERE ID_ACHAT=$id4");
                 echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
-            }            
+            }   
+            mysqli_close($con);         
         }
-        mysqli_close($con);
+    if (isset($_GET['id5'])) {
+        $id5=$_GET['id5'];
+        if ($id5 != ""){
+                mysqli_query($con,"DELETE FROM reception WHERE ID_RECEPTION=$id5");
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+            }   
+            mysqli_close($con);         
+        }
 ?>
