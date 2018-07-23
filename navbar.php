@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
         <?php
-          # start session in all pages
+          # start session in all pages!!!!!!!!!!
           if (isset($_SESSION["id_login"])) {
           $login=$_SESSION["id_login"];
           $con=mysqli_connect("localhost","root","");
