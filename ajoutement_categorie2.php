@@ -12,7 +12,7 @@ session_start();
 </head>
 <body>
 <?php 
-    include 'navbar.html';
+    include 'navbar.php';
     if (isset($_GET['id'])) {
         $id2=$_GET['id'];   
     }

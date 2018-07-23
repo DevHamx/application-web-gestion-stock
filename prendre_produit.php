@@ -14,7 +14,7 @@ session_start();
 
 <body>
     <?php
-    include 'navbar.html';
+    include 'navbar.php';
     if (isset($_GET['id'])) {
         $id5=$_GET['id'];   
     }

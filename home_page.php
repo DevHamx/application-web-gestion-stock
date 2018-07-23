@@ -19,7 +19,7 @@
   <body>
 
     <?php 
-    include 'navbar.html';?>
+    include 'navbar.php';?>
 
     <main role="main" class="container">
 

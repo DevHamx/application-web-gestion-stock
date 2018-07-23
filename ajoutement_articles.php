@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php 
-    include 'navbar.html';
+    include 'navbar.php';
     if (isset($_GET['id'])) {
         $id3=$_GET['id'];   
     }
