@@ -21,7 +21,6 @@ session_start();
     else {
         $id4=null;
     }
-    include 'navbar.html';
     $con=mysqli_connect("localhost","root","");
     mysqli_select_db($con,'aumk');
     $reponse1 = mysqli_query($con,"select * from categore1");
