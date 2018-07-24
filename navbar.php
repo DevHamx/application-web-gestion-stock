@@ -9,6 +9,7 @@
     mysqli_select_db($con,'aumk');
     $reponse = mysqli_query($con,"select ID_PROFILE from utilisateurs where ID_LOGIN=$login");
     $profile = mysqli_fetch_array($reponse);
+    $_SESSION["id_profile"]=$profile;
   }?>
 <link href="css/navbar.css" rel="stylesheet">
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
