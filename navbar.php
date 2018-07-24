@@ -1,12 +1,15 @@
 <?php
-          # start session in all pages!!!!!!!!!!
-          if (isset($_SESSION["id_login"])) {
-          $login=$_SESSION["id_login"];
-          $con=mysqli_connect("localhost","root","");
-          mysqli_select_db($con,'aumk');
-          $reponse = mysqli_query($con,"select ID_PROFILE from utilisateurs where ID_LOGIN=$login");
-          $profile = mysqli_fetch_array($reponse);
-        }?>
+    # start session in all pages!!!!!!!!!!
+    if (isset($_SESSION["id_login"])==false) {
+      header("location:index.php");
+    }
+    else{
+    $login=$_SESSION["id_login"];
+    $con=mysqli_connect("localhost","root","");
+    mysqli_select_db($con,'aumk');
+    $reponse = mysqli_query($con,"select ID_PROFILE from utilisateurs where ID_LOGIN=$login");
+    $profile = mysqli_fetch_array($reponse);
+  }?>
 <link href="css/navbar.css" rel="stylesheet">
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
     <a class="navbar-brand" href="Home_page.php"><img height="30x" src="res/images/home.svg"></a>
