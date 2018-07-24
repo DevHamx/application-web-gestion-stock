@@ -12,7 +12,9 @@ session_start();
     </head>
     <body>
         <?php
-        include 'navbar.php';?>
+        include 'navbar.php';
+        $profile = $_SESSION["id_profile"];
+        ?>
         <main role="main" class="container">
         <form class="form-signin" method="POST" action="consultation_collectibles.php">
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">consultation des collectibles</h1>
@@ -54,7 +56,12 @@ session_start();
                                 <th scope="col">ID Login</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -65,8 +72,13 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="prendre_produit.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <?php
+                                }
+                                ?>
                             </tr>
                     <?php
                     }?>
@@ -86,7 +98,12 @@ session_start();
                                 <th scope="col">ID Login</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -97,8 +114,13 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="prendre_produit.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <?php
+                                }
+                                ?>
                             </tr>
                     <?php
                     }?>
@@ -125,7 +147,12 @@ session_start();
                                 <th scope="col">ID Login</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <?php
+                                }
+                                ?>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -136,8 +163,13 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="prendre_produit.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <?php
+                                if ($profile[0] == 1||$profile[0] == 3) {?>
+                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <?php
+                                }
+                                ?>
                             </tr>
                     <?php
                     }?>
