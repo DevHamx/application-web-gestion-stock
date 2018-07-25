@@ -51,8 +51,8 @@ session_start();
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">ID Categorie 1</th>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Nom Categorie 1</th>
+                                <th scope="col">Nom Categorie 2</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -62,10 +62,12 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE1 from categore1 where ID_CATEGORE1 = $donnees[1]"));
+                        ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
@@ -89,8 +91,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">ID Categorie 1</th>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Nom Categorie 1</th>
+                                <th scope="col">Nom Categorie 2</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -100,10 +102,12 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse3)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse3)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE1 from categore1 where ID_CATEGORE1 = $donnees[1]"));
+                        ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
@@ -134,8 +138,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">ID Categorie 1</th>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Nom Categorie 1</th>
+                                <th scope="col">Nom Categorie 2</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -145,10 +149,12 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse2)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse2)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE1 from categore1 where ID_CATEGORE1 = $donnees[1]"));
+                        ?>
                             <tr>    
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
