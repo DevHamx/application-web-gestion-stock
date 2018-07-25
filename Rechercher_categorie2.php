@@ -124,7 +124,7 @@ session_start();
                     <?php       
                 }
                 else {
-                    $reponse2=mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 = '$valeur'");
+                    $reponse2=mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 like '%$valeur%'");
                     if (mysqli_fetch_array($reponse2) == null) {?>
                         <div class="alert alert-warning text-center form-signin" role="alert">
                         Ce Nom n'existe pas
@@ -132,7 +132,7 @@ session_start();
                         <?php
                     }
                     else {
-                        $reponse2=mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 = '$valeur'");?>
+                        $reponse2=mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 like '%$valeur%'");?>
                 <div id="table">
                     <table class="table table-hover">
                         <thead class="table-primary">
