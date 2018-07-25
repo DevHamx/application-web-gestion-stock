@@ -52,8 +52,8 @@ session_start();
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">ID Article</th>
-                                <th scope="col">ID Login</th>
+                                <th scope="col">Nom Article</th>
+                                <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <?php
@@ -65,11 +65,14 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
+                        $login_cin=mysqli_fetch_array(mysqli_query($con,"select CIN from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
-                                <td><?php echo $donnees[2]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
+                                <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
@@ -94,8 +97,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">ID Article</th>
-                                <th scope="col">ID Login</th>
+                                <th scope="col">Nom Article</th>
+                                <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <?php
@@ -107,11 +110,14 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse3)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse3)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
+                        $login_cin=mysqli_fetch_array(mysqli_query($con,"select CIN from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
-                                <td><?php echo $donnees[2]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
+                                <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
@@ -143,8 +149,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">ID Article</th>
-                                <th scope="col">ID Login</th>
+                                <th scope="col">Nom Article</th>
+                                <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <?php
@@ -156,11 +162,14 @@ session_start();
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                    <?php while($donnees = mysqli_fetch_array($reponse2)){?>
+                    <?php while($donnees = mysqli_fetch_array($reponse2)){
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
+                        $login_cin=mysqli_fetch_array(mysqli_query($con,"select CIN from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        ?>
                             <tr>    
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donnees[1]; ?></td>
-                                <td><?php echo $donnees[2]; ?></td>
+                                <td><?php echo $donneese[0]; ?></td>
+                                <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
