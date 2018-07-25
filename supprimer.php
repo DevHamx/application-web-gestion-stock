@@ -40,7 +40,7 @@
             $row3=mysqli_fetch_array($result4);
             if ( ($row2[0] == null)&&($row3[0] == null)) {
                 mysqli_query($con,"DELETE FROM article WHERE ID_ARTICLE=$id3");
-                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>L'article a ete supprimer avec succes</div>";
             }
             else {
                 echo "<div class='alert alert-warning text-center form-signin' role='alert'>vous doit supprimer les sous catégories avant de supprimer cette catégorie car ils ont relient</div>";
@@ -52,7 +52,7 @@
         $id4=$_GET['id4'];
         if ($id4 != ""){
                 mysqli_query($con,"DELETE FROM achat_fornisseur WHERE ID_ACHAT=$id4");
-                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>L'achat a ete supprimer avec succes</div>";
             }   
             mysqli_close($con);         
         }
@@ -60,7 +60,7 @@
         $id5=$_GET['id5'];
         if ($id5 != ""){
                 mysqli_query($con,"DELETE FROM reception WHERE ID_RECEPTION=$id5");
-                echo "<div class='alert alert-success text-center form-signin' role='alert'>La categorie a ete supprimer avec succes</div>";
+                echo "<div class='alert alert-success text-center form-signin' role='alert'>La collectible a ete supprimer avec succes</div>";
             }   
             mysqli_close($con);         
         }
