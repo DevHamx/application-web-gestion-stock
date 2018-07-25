@@ -168,7 +168,7 @@ session_start();
                         ?>
                             <tr>    
                                 <th scope="row"><?php echo $donnees[0];?></th>
-                                <td><?php echo $donneese[0]; ?></td>
+                                <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
