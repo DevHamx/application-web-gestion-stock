@@ -14,6 +14,7 @@ session_start();
         <?php
         include 'navbar.php';
         $profile = $_SESSION["id_profile"];
+        $login = $_SESSION["id_login"];
         ?>
         <main role="main" class="container">
         <form class="form-signin d-print-none" method="POST" action="consultation_collectibles.php">
@@ -45,7 +46,12 @@ session_start();
                         <?php
                     }
                     else {
-                        $reponse=mysqli_query($con,"select * from reception where ID_RECEPTION = $valeur");
+                        if ($profile[0] == 1||$profile[0] == 3){
+                            $reponse=mysqli_query($con,"select * from reception where ID_RECEPTION = $valeur");
+                        }
+                        else {
+                            $reponse=mysqli_query($con,"select * from reception where ID_RECEPTION = $valeur and ID_LOGIN = $login");
+                        }
                     ?>
                     <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
@@ -92,7 +98,12 @@ session_start();
                     <?php       
                 }}
                 elseif ($_POST["method"] == "Afficher tous la list") {
-                    $reponse3=mysqli_query($con,"select * from reception");
+                    if ($profile[0] == 1||$profile[0] == 3){
+                        $reponse3=mysqli_query($con,"select * from reception");
+                    }
+                    else {
+                        $reponse3=mysqli_query($con,"select * from reception where ID_LOGIN = $login");
+                    }
                     ?>
                     <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
@@ -139,7 +150,12 @@ session_start();
                     <?php       
                 }
                 else {
-                    $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur'");
+                    if ($profile[0] == 1||$profile[0] == 3){
+                        $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur'");
+                    }
+                    else {
+                        $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur' and ID_LOGIN = $login");
+                    }
                     if (mysqli_fetch_array($reponse2) == null) {?>
                         <div class="alert alert-warning text-center form-signin" role="alert">
                         Aucun Acquisition n'a été effectué à cette date
@@ -147,7 +163,7 @@ session_start();
                         <?php
                     }
                     else {
-                        $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur'");?>
+                        $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur' and ID_LOGIN = $login");?>
                         <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
                 <div id="table">
