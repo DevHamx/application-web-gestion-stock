@@ -14,7 +14,7 @@ session_start();
         <?php
         include 'navbar.php';?>
         <main role="main" class="container">
-        <form class="form-signin" method="POST" action="consultation_achats.php">
+        <form class="form-signin d-print-none" method="POST" action="consultation_achats.php">
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">consultation des achats</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
@@ -80,7 +80,9 @@ session_start();
                 elseif ($_POST["method"] == "Afficher tous la list") {
                     $reponse3=mysqli_query($con,"select * from achat_fornisseur");
                     ?>
+                    <button class="d-print-none" onclick="myPrint()">print</button>
                     <div id=table>
+                            <h1 style="display: none;" class="d-print-block">hi</h1>
                     <table class="table table-hover">
                         <thead class="table-primary">
                             <tr>
@@ -89,7 +91,7 @@ session_start();
                                 <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -103,8 +105,8 @@ session_start();
                                 <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
@@ -181,6 +183,12 @@ session_start();
             document.getElementById("table").innerHTML=x.responseText;
             return false;
         }
+        </script>
+        <script type="text/JavaScript">
+            function myPrint() {
+                window.print();
+                return false;
+            }
         </script>
         <!-- Bootstrap core JavaScript
     ================================================== -->
