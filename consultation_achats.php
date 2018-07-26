@@ -85,7 +85,14 @@ session_start();
                     <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
                     <div id=table>
-                            <h1 style="display: none;" class="d-print-block">hi</h1>
+                            <div style="display: none" class="d-print-block container">
+                            <?php echo date('Y-m-d');?>
+                                <div>
+                                    <img class="d-block mx-auto" src="res\images\entete_site.png">
+                                    <h1 style="color:#0a8ab4;" class="text-center mb-3 font-weight-bold text-uppercase">Gestion de stock</h2>
+                                </div>
+                                <h1 style="color:#0a8ab4;" class="text-center h5 mb-3 font-weight-bold text-uppercase">consultation des achats</h1>
+                            </div>
                     <table class="table table-hover">
                         <thead class="table-primary">
                             <tr>
