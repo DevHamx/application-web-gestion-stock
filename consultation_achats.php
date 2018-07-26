@@ -25,7 +25,7 @@ session_start();
         <div id="valeur" >
         <input  class="form-control" type="text" name="valeur" required ></div><br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
-        </form><br>
+        <br>
         <?php
         if (isset($_POST["valeur"])==false) {
             $_POST["valeur"]=0;
@@ -80,7 +80,8 @@ session_start();
                 elseif ($_POST["method"] == "Afficher tous la list") {
                     $reponse3=mysqli_query($con,"select * from achat_fornisseur");
                     ?>
-                    <button class="d-print-none" onclick="myPrint()">print</button>
+                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                     <div id=table>
                             <h1 style="display: none;" class="d-print-block">hi</h1>
                     <table class="table table-hover">
