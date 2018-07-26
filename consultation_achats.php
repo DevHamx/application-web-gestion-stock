@@ -45,6 +45,8 @@ session_start();
                     else {
                         $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT = $valeur");
                     ?>
+                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                     <div id="table">
                     <table class="table table-hover">
                         <thead class="table-primary">
@@ -54,7 +56,7 @@ session_start();
                                 <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -68,8 +70,8 @@ session_start();
                                 <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
@@ -125,6 +127,8 @@ session_start();
                     }
                     else {
                         $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT = '$valeur'");?>
+                        <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                 <div id="table">
                     <table class="table table-hover">
                         <thead class="table-primary">
@@ -134,7 +138,7 @@ session_start();
                                 <th scope="col">CIN du responsable</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
-                                <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                             </tr>
                         </thead>
                         <tbody class="table-light">
@@ -148,8 +152,8 @@ session_start();
                                 <td><?php echo $login_cin[0]; ?></td>
                                 <td><?php echo $donnees[3]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
-                                <td><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
                     <?php
                     }?>
