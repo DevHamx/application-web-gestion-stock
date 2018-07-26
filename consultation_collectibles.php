@@ -16,7 +16,7 @@ session_start();
         $profile = $_SESSION["id_profile"];
         ?>
         <main role="main" class="container">
-        <form class="form-signin" method="POST" action="consultation_collectibles.php">
+        <form class="form-signin d-print-none" method="POST" action="consultation_collectibles.php">
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">consultation des collectibles</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
@@ -27,7 +27,7 @@ session_start();
         <div id="valeur" >
         <input  class="form-control" type="text" name="valeur" required ></div><br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
-        </form><br>
+        <br>
         <?php
         if (isset($_POST["valeur"])==false) {
             $_POST["valeur"]=0;
@@ -47,6 +47,8 @@ session_start();
                     else {
                         $reponse=mysqli_query($con,"select * from reception where ID_RECEPTION = $valeur");
                     ?>
+                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                     <div id="table">
                     <table class="table table-hover">
                         <thead class="table-primary">
@@ -58,7 +60,7 @@ session_start();
                                 <th scope="col">Quantite</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                                     <?php
                                 }
                                 ?>
@@ -77,8 +79,8 @@ session_start();
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
                                 ?>
@@ -92,6 +94,8 @@ session_start();
                 elseif ($_POST["method"] == "Afficher tous la list") {
                     $reponse3=mysqli_query($con,"select * from reception");
                     ?>
+                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                     <div id=table>
                     <table class="table table-hover">
                         <thead class="table-primary">
@@ -103,7 +107,7 @@ session_start();
                                 <th scope="col">Quantite</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                                     <?php
                                 }
                                 ?>
@@ -122,8 +126,8 @@ session_start();
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
                                 ?>
@@ -144,6 +148,8 @@ session_start();
                     }
                     else {
                         $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION = '$valeur'");?>
+                        <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                </form>
                 <div id="table">
                     <table class="table table-hover">
                         <thead class="table-primary">
@@ -155,7 +161,7 @@ session_start();
                                 <th scope="col">Quantite</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                    <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
+                                    <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
                                     <?php
                                 }
                                 ?>
@@ -174,8 +180,8 @@ session_start();
                                 <td><?php echo $donnees[4]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
-                                <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
+                                <td class="d-print-none"><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
                                 ?>
@@ -213,6 +219,12 @@ session_start();
             document.getElementById("table").innerHTML=x.responseText;
             return false;
         }
+        </script>
+        <script type="text/JavaScript">
+            function myPrint() {
+                window.print();
+                return false;
+            }
         </script>
         <!-- Bootstrap core JavaScript
     ================================================== -->
