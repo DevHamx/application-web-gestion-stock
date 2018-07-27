@@ -1,5 +1,8 @@
 <?php
 session_start();
+if (isset($_SESSION["id_login"])) {
+    $_SESSION["id_login"]=null;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
