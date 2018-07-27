@@ -75,6 +75,11 @@
           </div>
         </li>
       </ul>
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.php">Deconecter</a>
+          </li>
+        </ul>
       <form class="form-inline my-2 my-lg-0" method="GET" action="search.php">
         <input required class="form-control mr-sm-2" name="search" type="text" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
