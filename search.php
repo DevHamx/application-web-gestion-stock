@@ -24,26 +24,35 @@ session_start();
 <?php
     include 'navbar.php';
     if (isset($_GET['search'])) {
+      $search = $_GET['search'];
         $con=mysqli_connect("localhost","root","");
         mysqli_select_db($con,'aumk');
-    }
+        $reponse = mysqli_query($con,"select * from article where NOM_ARTICLE like '%$search%'");
+        $donnee = mysqli_fetch_array($reponse);
+        $reponse2 = mysqli_query($con,"select * from categore1 where NOM_CATEGORE1 like '%$search%'");
+        $donnee2 = mysqli_fetch_array($reponse2);
+        $reponse3 = mysqli_query($con,"select * from categore2 where NOM_CATEGORE2 like '%$search%'");
+        $donnee3 = mysqli_fetch_array($reponse3);
     ?>
     <div class="list-form">
     <ul class="list-group">
   <li class="list-group-item d-flex justify-content-between align-items-center">
     Articles
-    <span class="badge badge-primary badge-pill">14</span>
+    <span class="badge badge-primary badge-pill"><?php echo mysqli_num_rows($reponse);?></span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    Categorie
-    <span class="badge badge-primary badge-pill">2</span>
+    Categorie 1
+    <span class="badge badge-primary badge-pill"><?php echo mysqli_num_rows($reponse2);?></span>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center">
-    Achat
-    <span class="badge badge-primary badge-pill">1</span>
+   Categorie 2
+    <span class="badge badge-primary badge-pill"><?php echo mysqli_num_rows($reponse3);?></span>
   </li>
 </ul>
 </div>
+<?php
+}
+?>
 
  <!-- Bootstrap core JavaScript
     ================================================== -->
