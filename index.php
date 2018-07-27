@@ -22,8 +22,8 @@ if (isset($_SESSION["id_login"])) {
             <label class="sr-only" for="password">password</label>
             <input class="form-control" type="password" name="password" placeholder="password" required autofocus><br>
             <input class="btn btn-lg btn-primary btn-block" type="submit" value="Log In">
-        
-        <?php
+            <?php 
+                include 'footer.html';
             if(isset($_POST["CIN"])&&isset($_POST['password'])){
                 $var=0;
                 $login1=$_POST['CIN'];
