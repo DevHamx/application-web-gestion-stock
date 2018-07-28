@@ -77,7 +77,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Deconecter</a>
+            <a class="nav-link" href="index.php">Deconnecter</a>
           </li>
         </ul>
       <form class="form-inline my-2 my-lg-0" method="GET" action="search.php">
