@@ -33,12 +33,13 @@ session_start();
         if (isset($_POST["valeur"])==false) {
             $_POST["valeur"]=0;
         }
-        else{
-            $valeur2=$_POST["valeur2"];
+        if (isset($_POST["valeur2"])==false){
+            $_POST["valeur2"]=0;
         }
 
-            if (isset($_POST["valeur"])&&isset($_POST["method"])) {
+            if (isset($_POST["valeur"])&&isset($_POST["method"])&&isset($_POST["valeur2"])) {
                 $valeur=$_POST["valeur"];
+                $valeur2=$_POST["valeur2"];
                 $con=mysqli_connect("localhost","root","");
                 mysqli_select_db($con,'aumk');
                 if ($_POST["method"] == "ID de la collectibles") {
