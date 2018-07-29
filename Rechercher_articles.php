@@ -72,7 +72,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_articles.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
@@ -112,7 +112,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_articles.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
@@ -159,7 +159,7 @@ session_start();
                                 <td><?php echo $donnees[2]; ?></td>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
-                                <td><a href="ajoutement_categorie1.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
+                                <td><a href="ajoutement_articles.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                                 <?php
                                 }
