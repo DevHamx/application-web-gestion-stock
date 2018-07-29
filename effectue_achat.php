@@ -15,6 +15,10 @@ session_start();
 <body>
     <?php 
     include 'navbar.php';
+    $profile=$_SESSION["id_profile"];
+    if ($profile[0] != 1&&$profile[0] != 3) {
+        header("location:home_page.php");
+    }
     if (isset($_GET['id'])) {
         $id4=$_GET['id'];   
     }

@@ -11,7 +11,11 @@ session_start();
     <title>Ajouter dans la Catégorie 2</title>
 </head>
 <body>
-<?php 
+<?php
+    $profile=$_SESSION["id_profile"];
+    if ($profile[0] != 1&&$profile[0] != 3) {
+        header("location:home_page.php");
+    }
     include 'navbar.php';
     if (isset($_GET['id'])) {
         $id2=$_GET['id'];   

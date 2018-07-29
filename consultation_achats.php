@@ -12,6 +12,10 @@ session_start();
     </head>
     <body>
         <?php
+        $profile=$_SESSION["id_profile"];
+        if ($profile[0] != 1&&$profile[0] != 3) {
+            header("location:home_page.php");
+        }
         include 'navbar.php';?>
         <main role="main" class="container">
         <form class="form-signin d-print-none" method="POST" action="consultation_achats.php">
