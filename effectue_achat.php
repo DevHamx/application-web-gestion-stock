@@ -85,7 +85,7 @@ session_start();
     <script type="text/JavaScript">
     function change_categore(){
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET","ajax.php?categorie1="+document.getElementById("top_Categorie").value+"&sec_Categorie=",false);
+        xmlhttp.open("GET","ajax.php?categorie1="+document.getElementById("top_Categorie").value,false);
         xmlhttp.send(null);
         document.getElementById("sec_Categorie").innerHTML=xmlhttp.responseText;   
         if (document.getElementById("top_Categorie").value != "sélectionnez la catégorie secondaire" ) {
@@ -94,7 +94,7 @@ session_start();
 }
     function change_categore2(){
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("GET","ajax.php?sec_Categorie="+document.getElementById("sec_Categorie2").value+"&categorie1=",false);
+        xmlhttp.open("GET","ajax.php?sec_Categorie="+document.getElementById("sec_Categorie2").value,false);
         xmlhttp.send(null);
         document.getElementById("article").innerHTML=xmlhttp.responseText;  
 }
