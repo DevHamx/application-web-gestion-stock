@@ -7,7 +7,7 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/signin2.css" rel="stylesheet">
+        <link href="css/signin3.css" rel="stylesheet">
         <title>consultation des achats</title>
     </head>
     <body>
@@ -26,13 +26,16 @@ session_start();
             <option value="ID de lachat">ID de lachat</option>
             <option value="Date de lachat">Date de lachat</option>
         </select><br><br>
-        <div id="valeur" >
-        <input  class="form-control" type="text" name="valeur" required ></div><br>
+        <div id="valeur">
+        <input class="form-control" type="text" required ></div><br>
         <input class="btn btn-lg btn-primary btn-block" type="submit" value="Rechercher">
         <br>
         <?php
         if (isset($_POST["valeur"])==false) {
             $_POST["valeur"]=0;
+        }
+        else{
+            $valeur2=$_POST["valeur2"];
         }
             if (isset($_POST["valeur"])&&isset($_POST["method"])) {
                 $valeur=$_POST["valeur"];
@@ -137,15 +140,20 @@ session_start();
                     <?php       
                 }
                 else {
-                    $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT = '$valeur'");
-                    if (mysqli_fetch_array($reponse2) == null) {?>
-                        <div class="alert alert-warning text-center form-signin" role="alert">
-                        Aucun achat n'a été effectué à cette date
-                        </div>
-                        <?php
+                    if ($valeur > $valeur2) {
+                        $tmp = $valeur;
+                        $valeur = $valeur2;
+                        $valeur2 = $tmp;
                     }
+                    $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT between '$valeur' and '$valeur2'");
+                    if (mysqli_fetch_array($reponse2) == null) {?>
+                           <div class="alert alert-warning text-center form-signin" role="alert">
+                        Aucun achat n'a été effectué à cette date
+                        </div> 
+                        <?php
+                        }
                     else {
-                        $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT = '$valeur'");?>
+                        $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT between '$valeur' and '$valeur2'");?>
                         <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
                 <div id="table">
@@ -202,7 +210,7 @@ session_start();
                 document.getElementById("valeur").innerHTML=null;
             }
             else{
-                document.getElementById("valeur").innerHTML="<input id='valeur' name='valeur' class='form-control' pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' required type='date' value='<?php echo date('Y-m-d');?>' max='<?php echo date('Y-m-d');?>'>";
+                document.getElementById("valeur").innerHTML="<div class='form-row'><div class='col'><input name='valeur' class='form-control' pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' required type='date' value='<?php echo date('Y-m-d');?>' max='<?php echo date('Y-m-d');?>'></div><div class='col col-md-auto'><img src='res/images/right-arrow.svg' height='50px';></div><div class='col'><input name='valeur2' class='form-control' pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' required type='date' value='<?php echo date('Y-m-d');?>' max='<?php echo date('Y-m-d');?>'></div></div>";
             }
             }
         }
