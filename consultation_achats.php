@@ -23,7 +23,7 @@ session_start();
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
             <option value="Afficher tous la list">Afficher tous la list</option>
-            <option value="ID de lachat">ID de lachat</option>
+            <option value="Numero de reference">Numero de reference</option>
             <option value="Date de lachat">Date de lachat</option>
         </select><br><br>
         <div id="valeur">
@@ -34,15 +34,16 @@ session_start();
         if (isset($_POST["valeur"])==false) {
             $_POST["valeur"]=0;
         }
-        else{
+        if(isset($_POST["valeur2"])){
             $valeur2=$_POST["valeur2"];
         }
             if (isset($_POST["valeur"])&&isset($_POST["method"])) {
                 $valeur=$_POST["valeur"];
                 $con=mysqli_connect("localhost","root","");
                 mysqli_select_db($con,'aumk');
-                if ($_POST["method"] == "ID de lachat") {
-                    $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT = $valeur");
+                if ($_POST["method"] == "Numero de reference") {
+                    $reponse2=mysqli_fetch_array(mysqli_query($con,"select ID_ACHAT_REF from achat_reference where REFERENCE_NUMBER = $valeur"));
+                    $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT_REF = $reponse2[0]");
                     if (mysqli_fetch_array($reponse) == null) {?>
                         <div class="alert alert-warning text-center form-signin" role="alert">
                         Ce ID n'existe pas
@@ -50,7 +51,7 @@ session_start();
                         <?php
                     }
                     else {
-                        $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT = $valeur");
+                        $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT_REF = $reponse2[0]");
                     ?>
                     <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
                 </form>
@@ -69,6 +70,8 @@ session_start();
                                 <th scope="col">#</th>
                                 <th scope="col">Nom Article</th>
                                 <th scope="col">Responsable</th>
+                                <th scope="col">Fournisseur</th>
+                                <th scope="col">numéro de réference</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
@@ -78,13 +81,16 @@ session_start();
                     <?php while($donnees = mysqli_fetch_array($reponse)){
                         $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
                         $login_cin=mysqli_fetch_array(mysqli_query($con,"select NOM_UTILISATEUR,PRENOM_UTILISATEUR from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        $reference = mysqli_fetch_array(mysqli_query($con,"select FOURNISSEUR,REFERENCE_NUMBER from achat_reference where ID_ACHAT_REF = $donnees[3]"));
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $login_cin[0];echo " " .$login_cin[1]; ?></td>
-                                <td><?php echo $donnees[3]; ?></td>
+                                <td><?php echo $reference[0]; ?></td>
+                                <td><?php echo $reference[1]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
+                                <td><?php echo $donnees[5]; ?></td>
                                 <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
@@ -114,6 +120,8 @@ session_start();
                                 <th scope="col">#</th>
                                 <th scope="col">Nom Article</th>
                                 <th scope="col">Responsable</th>
+                                <th scope="col">Fournisseur</th>
+                                <th scope="col">numéro de réference</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
@@ -123,13 +131,16 @@ session_start();
                     <?php while($donnees = mysqli_fetch_array($reponse3)){
                         $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
                         $login_cin=mysqli_fetch_array(mysqli_query($con,"select NOM_UTILISATEUR,PRENOM_UTILISATEUR from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        $reference = mysqli_fetch_array(mysqli_query($con,"select FOURNISSEUR,REFERENCE_NUMBER from achat_reference where ID_ACHAT_REF = $donnees[3]"));
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $login_cin[0];echo " " .$login_cin[1]; ?></td>
-                                <td><?php echo $donnees[3]; ?></td>
+                                <td><?php echo $reference[0]; ?></td>
+                                <td><?php echo $reference[1]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
+                                <td><?php echo $donnees[5]; ?></td>
                                 <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
@@ -171,6 +182,8 @@ session_start();
                                 <th scope="col">#</th>
                                 <th scope="col">Nom Article</th>
                                 <th scope="col">Responsable</th>
+                                <th scope="col">Fournisseur</th>
+                                <th scope="col">numéro de réference</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
                                 <th class="text-center d-print-none" scope="col" colspan="2" width="1%">Options</th>
@@ -180,13 +193,16 @@ session_start();
                     <?php while($donnees = mysqli_fetch_array($reponse2)){
                         $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_ARTICLE from article where ID_ARTICLE = $donnees[1]"));
                         $login_cin=mysqli_fetch_array(mysqli_query($con,"select NOM_UTILISATEUR,PRENOM_UTILISATEUR from utilisateurs where ID_LOGIN = $donnees[2]"));
+                        $reference = mysqli_fetch_array(mysqli_query($con,"select FOURNISSEUR,REFERENCE_NUMBER from achat_reference where ID_ACHAT_REF = $donnees[3]"));
                         ?>
                             <tr>    
                                 <th scope="row"><?php echo $donnees[0];?></th>
                                 <td><?php echo $donnees1[0]; ?></td>
                                 <td><?php echo $login_cin[0];echo " " .$login_cin[1]; ?></td>
-                                <td><?php echo $donnees[3]; ?></td>
+                                <td><?php echo $reference[0]; ?></td>
+                                <td><?php echo $reference[1]; ?></td>
                                 <td><?php echo $donnees[4]; ?></td>
+                                <td><?php echo $donnees[5]; ?></td>
                                 <td class="d-print-none"><a href="effectue_achat.php?id=<?php echo $donnees[0];?>"><img src="res\images\edit-icon.svg" height="30x" title="modifier"></a></td>
                                 <td class="d-print-none"><a onclick="supprimer(<?php echo $donnees[0]; ?>)" href="#"><img src="res\images\delete-icon.svg" height="30x" title="supprimer"></a></td>
                             </tr>
@@ -203,7 +219,7 @@ session_start();
         function change_method() {
         if (document.getElementById("method").value != "Recherche Par :") {
             var method = document.getElementById("method").value;
-            if (document.getElementById("method").value === "ID de lachat") {
+            if (document.getElementById("method").value === "Numero de reference") {
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='number' name='valeur' placeholder='"+String(method)+"' required >";   
             }
             else if(document.getElementById("method").value === "Afficher tous la list"){
