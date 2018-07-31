@@ -32,7 +32,7 @@ if ($profile[0] != 1&&$profile[0] != 3) {
             <label class="sr-only" for="Nom_de_lartcile">Nom de l'article</label>
             <input class="form-control" type="text" name="Nom_de_lartcile" placeholder="<?php if ($id3 != null){
                 $value3="Le nouveau nom de larticle"; echo $value3 ;}
-                else{$value3="Nom de larticle'";echo $value3 ;}?>" required autofocus><br>
+                else{$value3="Nom de larticle";echo $value3 ;}?>" required autofocus><br>
             </select>
             <select name="Nom_de_la_Categorie2" class="custom-select">
                 <option disabled selected>sélectionnez la catégorie secondaire</option>
@@ -70,7 +70,7 @@ if ($profile[0] != 1&&$profile[0] != 3) {
                             <?php
                         }
                         else{
-                        mysqli_query($con,"INSERT INTO article (`ID_CATEGORE2`,`NOM_ARTICLE`) VALUES ($id3[0],'$Nom3')"); 
+                        mysqli_query($con,"INSERT INTO article (`ID_CATEGORE2`,`NOM_ARTICLE`) VALUES ($id[0],'$Nom3')"); 
                         mysqli_close($con);
                         ?>              
                             </div>
