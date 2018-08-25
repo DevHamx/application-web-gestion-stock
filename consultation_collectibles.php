@@ -58,7 +58,7 @@ session_start();
                             $reponse=mysqli_query($con,"select * from reception where ID_RECEPTION = $valeur and ID_LOGIN = $login");
                         }
                     ?>
-                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                    <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                     <div id="table">
                     <div style="display: none" class="d-print-block container">
@@ -118,7 +118,7 @@ session_start();
                         $reponse3=mysqli_query($con,"select * from reception where ID_LOGIN = $login");
                     }
                     ?>
-                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                    <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                     <div id=table>
                     <div style="display: none" class="d-print-block container">
@@ -191,7 +191,7 @@ session_start();
                     }
                     else {
                         $reponse2=mysqli_query($con,"select * from reception where DATE_RECEPTION between '$valeur' and '$valeur2' and ID_LOGIN = $login");?>
-                        <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                        <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                 <div id="table">
                 <div style="display: none" class="d-print-block container">

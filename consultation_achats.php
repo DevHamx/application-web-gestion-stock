@@ -52,7 +52,7 @@ session_start();
                     else {
                         $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT_REF = $reponse2[0]");
                     ?>
-                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                    <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                     <div id="table">
                     <div style="display: none" class="d-print-block container">
@@ -102,7 +102,7 @@ session_start();
                 elseif ($_POST["method"] == "Afficher tous la list") {
                     $reponse3=mysqli_query($con,"select * from achat_fornisseur");
                     ?>
-                    <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                    <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                     <div id=table>
                             <div style="display: none" class="d-print-block container">
@@ -164,7 +164,7 @@ session_start();
                         }
                     else {
                         $reponse2=mysqli_query($con,"select * from achat_fornisseur where DATE_ACHAT between '$valeur' and '$valeur2'");?>
-                        <button class="d-print-none btn btn-lg btn-success btn-block" onclick="myPrint()">print</button>
+                        <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
                 </form>
                 <div id="table">
                 <div style="display: none" class="d-print-block container">
