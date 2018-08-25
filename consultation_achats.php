@@ -43,8 +43,7 @@ session_start();
                 mysqli_select_db($con,'aumk');
                 if ($_POST["method"] == "Numero de reference") {
                     $reponse2=mysqli_fetch_array(mysqli_query($con,"select ID_ACHAT_REF from achat_reference where REFERENCE_NUMBER = $valeur"));
-                    $reponse=mysqli_query($con,"select * from achat_fornisseur where ID_ACHAT_REF = $reponse2[0]");
-                    if (mysqli_fetch_array($reponse) == null) {?>
+                    if ($reponse2 == null) {?>
                         <div class="alert alert-warning text-center form-signin" role="alert">
                         Ce ID n'existe pas
                         </div>
