@@ -17,7 +17,7 @@ session_start();
         ?>
         <main role="main" class="container">
         <form class="form-signin" method="POST" action="Rechercher_categorie1.php">
-        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Recherche dans la Catégorie 1</h1>
+        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Recherche dans les Catégories globale</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
             <option value="Afficher tous la list">Afficher tous la list</option>

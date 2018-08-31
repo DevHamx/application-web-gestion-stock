@@ -28,7 +28,7 @@ session_start();
     $reponse1 = mysqli_query($con,"select * from categore1");
     ?>
     <form class="form-signin" method="POST" action="ajoutement_categorie2.php?id=<?php echo $id2?>">
-    <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 2</h1>
+    <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Sous-Catégories</h1>
             <label class="sr-only" for="Nom_de_la_Categorie2">Nom de la Catégorie</label>
             <input class="form-control" type="text" name="Nom_de_la_Categorie2" placeholder="<?php if ($id2 != null){
                 $value2="Le nouveau nom de la Catégorie"; echo $value2 ;}

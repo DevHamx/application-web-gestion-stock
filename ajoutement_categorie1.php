@@ -25,7 +25,7 @@ session_start();
     }
     ?>
     <form class="form-signin" method="POST" action="ajoutement_categorie1.php?id=<?php echo $id?>">
-    <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégorie 1</h1>
+    <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Catégories globale</h1>
             <label class="sr-only" for="Nom_de_la_Categorie1">Nom de la Catégorie</label>
             <input required autofocus class="form-control" type="text" name="Nom_de_la_Categorie1" placeholder="<?php if ($id != null){
                 $value2="Le nouveau nom de la Catégorie"; echo $value2;}

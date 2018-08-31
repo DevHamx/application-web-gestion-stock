@@ -73,7 +73,7 @@ session_start();
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Article</th>
                                 <th scope="col">Personnel</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
@@ -133,7 +133,7 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Article</th>
                                 <th scope="col">Personnel</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>
@@ -206,7 +206,7 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Article</th>
                                 <th scope="col">Personnel</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Quantite</th>

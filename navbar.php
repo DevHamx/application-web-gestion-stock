@@ -21,7 +21,7 @@
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" id="dropdown01" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégorie 1</a>
+            <a class="nav-link dropdown-toggle" id="dropdown01" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégories globale</a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <?php
                if ($profile[0] == 1||$profile[0] == 3){?>
@@ -33,7 +33,7 @@
             </div>
           </li>
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" id="dropdown02" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Catégorie 2</a>
+          <a class="nav-link dropdown-toggle" id="dropdown02" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sous Catégories</a>
           <div class="dropdown-menu" aria-labelledby="dropdown02">
           <?php
            if ($profile[0] == 1||$profile[0] == 3){?>
@@ -45,7 +45,7 @@
           </div>
         </li>
         <li class="nav-item dropdown active">
-          <a class="nav-link dropdown-toggle" id="dropdown03" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Article</a>
+          <a class="nav-link dropdown-toggle" id="dropdown03" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Articles</a>
           <div class="dropdown-menu" aria-labelledby="dropdown03">
           <?php if ($profile[0] == 1||$profile[0] == 3){?>
             <a class="dropdown-item" href="ajoutement_articles.php">Ajouter un article</a>
@@ -81,8 +81,8 @@
           </li>
         </ul>
       <form class="form-inline my-2 my-lg-0" method="GET" action="search.php">
-        <input required class="form-control mr-sm-2" name="search" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+        <input required class="form-control mr-sm-2" name="search" type="text" placeholder="Chercher" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Chercher</button>
       </form>
     </div>
   </nav>

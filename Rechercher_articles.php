@@ -52,8 +52,8 @@ session_start();
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 2</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Sous Catégorie</th>
+                                <th scope="col">Article</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -92,8 +92,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 2</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Sous Catégorie</th>
+                                <th scope="col">Article</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -139,8 +139,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 2</th>
-                                <th scope="col">Nom Article</th>
+                                <th scope="col">Sous Catégorie</th>
+                                <th scope="col">Article</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>

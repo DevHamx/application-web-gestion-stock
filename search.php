@@ -41,8 +41,8 @@ session_start();
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Nom Categorie 2</th>
-                        <th scope="col">Nom Article</th>
+                        <th scope="col">Sous Catégorie</th>
+                        <th scope="col">Article</th>
                         <?php
                         if ($profile[0] == 1||$profile[0] == 3) {?>
                             <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -74,7 +74,7 @@ session_start();
         </div>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center nav-item dropdown">
-    Categorie 1
+    Catégories globale
     <span class="badge badge-primary badge-pill nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo mysqli_num_rows($reponse2);?></span>
     <div class="dropdown-menu" aria-labelledby="dropdown02">
     <table class="table table-hover">
@@ -109,15 +109,15 @@ session_start();
     </table></div>
   </li>
   <li class="list-group-item d-flex justify-content-between align-items-center nav-item dropdown">
-   Categorie 2
+    Sous Catégories
     <span class="badge badge-primary badge-pill nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo mysqli_num_rows($reponse3);?></span>
     <div class="dropdown-menu" aria-labelledby="dropdown03">
     <table class="table table-hover">
         <thead class="table-primary">
             <tr >
                 <th scope="col">#</th>
-                <th scope="col">Nom Categorie 1</th>
-                <th scope="col">Nom Categorie 2</th>
+                <th scope="col">Catégories global</th>
+                <th scope="col">Sous Catégorie</th>
                 <?php
                 if ($profile[0] == 1||$profile[0] == 3) {?>
                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>

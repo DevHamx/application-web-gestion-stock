@@ -16,7 +16,7 @@ session_start();
         $profile = $_SESSION["id_profile"];?>
         <main role="main" class="container">
         <form class="form-signin" method="POST" action="Rechercher_categorie2.php">
-        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Recherche dans la Catégorie 2</h1>
+        <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">Recherche dans les sous-catégories</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
             <option value="Afficher tous la list">Afficher tous la list</option>
@@ -51,8 +51,8 @@ session_start();
                         <thead class="table-primary">
                             <tr >
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 1</th>
-                                <th scope="col">Nom Categorie 2</th>
+                                <th scope="col">Catégorie globale</th>
+                                <th scope="col">Sous Catégorie</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -91,8 +91,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 1</th>
-                                <th scope="col">Nom Categorie 2</th>
+                                <th scope="col">Catégorie globale</th>
+                                <th scope="col">Sous Catégorie</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
@@ -138,8 +138,8 @@ session_start();
                         <thead class="table-primary">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nom Categorie 1</th>
-                                <th scope="col">Nom Categorie 2</th>
+                                <th scope="col">Catégorie globale</th>
+                                <th scope="col">Sous Catégorie</th>
                                 <?php
                                 if ($profile[0] == 1||$profile[0] == 3) {?>
                                     <th class="text-center" scope="col" colspan="2" width="1%">Options</th>
