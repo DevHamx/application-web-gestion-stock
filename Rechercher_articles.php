@@ -104,7 +104,7 @@ session_start();
                         </thead>
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse3)){
-                            $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE1 from categore1 where ID_CATEGORE1 = $donnees[1]"));
+                            $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE2 from categore2 where ID_CATEGORE2 = $donnees[1]"));
                         ?>
                             <tr>
                                 <th scope="row"><?php echo $donnees[0];?></th>
@@ -151,7 +151,7 @@ session_start();
                         </thead>
                         <tbody class="table-light">
                     <?php while($donnees = mysqli_fetch_array($reponse2)){
-                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE1 from categore1 where ID_CATEGORE1 = $donnees[1]"));
+                        $donnees1=mysqli_fetch_array(mysqli_query($con,"select NOM_CATEGORE2 from categore2 where ID_CATEGORE2 = $donnees[1]"));
                         ?>
                             <tr>    
                                 <th scope="row"><?php echo $donnees[0];?></th>
