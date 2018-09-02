@@ -22,7 +22,7 @@ session_start();
         <h1 style="color:#0a8ab4;" class="text-center h3 mb-3 font-weight-bold text-uppercase">consultation des achats</h1>
         <select id="method" name="method" class="custom-select" onchange="change_method()">
             <option disabled selected>Recherche Par :</option>
-            <option value="Afficher tous la list">Afficher tous la list</option>
+            <option value="Afficher toute la list">Afficher toute la list</option>
             <option value="Numero de reference">Numero de reference</option>
             <option value="Date de lachat">Date de lachat</option>
         </select><br><br>
@@ -99,7 +99,7 @@ session_start();
                     </table></div>
                     <?php       
                 }}
-                elseif ($_POST["method"] == "Afficher tous la list") {
+                elseif ($_POST["method"] == "Afficher toute la list") {
                     $reponse3=mysqli_query($con,"select * from achat_fornisseur");
                     ?>
                     <a href="#" class="d-print-none d-flex justify-content-center" onclick="myPrint()"><img src="res\images\print.svg" height="50px" title="print"></a>
@@ -221,7 +221,7 @@ session_start();
             if (document.getElementById("method").value === "Numero de reference") {
                 document.getElementById("valeur").innerHTML="<input id='valeur' class='form-control' type='number' name='valeur' placeholder='"+String(method)+"' required >";   
             }
-            else if(document.getElementById("method").value === "Afficher tous la list"){
+            else if(document.getElementById("method").value === "Afficher toute la list"){
                 document.getElementById("valeur").innerHTML=null;
             }
             else{
