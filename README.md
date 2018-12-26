@@ -1,5 +1,6 @@
 # application-web-gestion-stock
 une application web de gestion de stock
+
 FR:
 Ce projet est une application web de gestion de stock développée avec
 PHP5, MySQL, HTML5,CSS3 & JAVASCRIPT(Bootstrap Framework),AJAX,
